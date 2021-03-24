@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+
+            function App(props) { // Parent
+                const number = 10
+                const number1 = 11
+
+                return (
+                    <div>
+                    <NumberColor number={number}/>
+                    <NumberColor number={number1}/>
+                    </div>
+                )
+            }
+
+            function NumberColor(props) { // Child
+                console.log(props)
+                return (                   
+                 (props.number%2===0) ? (<div>
+                     <h1 >Even Number</h1>
+                     <h1  style={{color: 'red'}}>{props.number}</h1>
+                     </div>) : (<div>
+                         <h1 >Odd Number</h1>
+                         <h1  style={{color: 'yellow'}} >{props.number}</h1>
+                        </div> )   
+                )
+            }
+
+            ReactDOM.render(<App/>, rootHandle)
+        </script>
+    </body>
+</html>

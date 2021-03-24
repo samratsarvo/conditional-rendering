@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        
+        <script src="js/react.development.js"></script>
+        <script src="js/react-dom.development.js"></script>
+        <script src="js/babel.js"></script>
+
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+
+            function App(props) { //Parent
+                const user1 = { id: 1, name: 'user1', email: 'user1@gmail.com', city: 'bangalore'}
+                const user2 = { id: 1, name: 'user1', email: '', city: ''}
+            
+                return (
+                <div>
+               <UserInfo task={user1}/>
+               <UserInfo task={user2}/>
+                </div>
+            )
+            }
+  
+            function UserInfo(props) { //Child
+            console.log(props)
+            const display = props.task
+                return (
+                    (Object.keys(display).map((ele,i) => {
+                        return (
+                            (display[ele]==='') ? (
+                                <h2 key={i}> {ele}: {display[ele]}  </h2>
+                                ) : (
+                                    <h2 key={i}> {ele}: {display[ele]} </h2>
+                                    )
+                        )
+                    }))
+                )
+            }
+
+            ReactDOM.render(<App/>,rootHandle)
+        </script>
+    </body>
+</html>
+
+

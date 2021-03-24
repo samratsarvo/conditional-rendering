@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="root">
+
+        </div>
+        
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script crossorigin src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+        <script type="text/babel">
+            const rootHandle = document.getElementById('root')
+
+            function App(props) { // Parent
+                const number = 10
+                const number1 = 21
+
+                return (
+                    <div>
+                    <NumberShow number={number}/>
+                    <NumberShow number={number1}/>
+                    </div>
+                )
+            }
+
+            function NumberShow(props) { // Child
+                console.log(props)
+                return (                   
+                 (props.number%2===0) ? (
+                     <h1>{props.number} is even</h1>
+                     ) : (
+                         <h1>{props.number} is odd</h1>
+                         )   
+                )
+            }
+
+            ReactDOM.render(<App/>, rootHandle)
+        </script>
+    </body>
+</html>
